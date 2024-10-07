@@ -1,0 +1,70 @@
+@extends('layouts.base')
+@section('content')
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            {{ __('Users') }}
+        </h2>
+    </x-slot>
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+            <div class="bg-white flex items-center justify-between mx-6 px-6 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                    {{ __("Ajouter un utilisateur") }}
+                </div>
+            </div>
+            <div class="bg-white flex items-center justify-between mx-6 px-6 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+               <div class="p-6 w-full space-y-6">
+                <form action="{{route('users.store')}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="space-y-6">
+                        <div class="flex space-x-3 items-center">
+                            <div class="space-y-2 w-1/3">
+                                <label for="user">Nom</label>
+                                <input type="text" name="nom" id="nom" value="{{old('nom')}}"class="border-gray-300 rounded-md w-full">
+                            </div>
+
+                        </div>
+                        <div class="flex space-x-3 items-center">
+                            <div class="space-y-2 w-1/3">
+                                <label for="user">Tel</label>
+                                <input type="text" name="telephone" id="telephone" value="{{old('telephone')}}"class="border-gray-300 rounded-md w-full">
+                            </div>
+
+                        </div>
+                        <div class="flex space-x-3 items-center">
+                            <div class="space-y-2 w-1/3">
+                                <label for="user">Email</label>
+                                <input type="text" name="email" id="email" value="{{old('email')}}"class="border-gray-300 rounded-md w-full">
+                            </div>
+
+                        </div>
+                        <div class="flex space-x-3 items-center">
+                            <div class="space-y-2 w-1/3">
+                                <label for="user"></label>
+                                <select name="roles[]" class="form-control" multiple="multiple">
+                                    @foreach ($roles as $value => $label)
+                                        <option value="{{ $value }}">
+                                        </option>
+                                     @endforeach
+                                </select></div>
+
+                        </div>
+
+
+                    </div>
+                    <div>
+                        <button type="submit" class="mt-6 bg-blue-600 hover:bg-blue-500 text-black text-sm px-3 py-2 rounded-md">
+                            Ajouter
+                        </button>
+                    </div>
+                </form>
+                @if($errors->any())
+                {{ implode('', $errors->all('<div>:message</div>')) }}
+                @endif
+
+               </div>
+            </div>
+        </div>
+    </div>
+@endsection
