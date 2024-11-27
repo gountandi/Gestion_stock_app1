@@ -12,7 +12,7 @@ class LigneApprovisionement extends Model
     protected $fillable = [
         'qte_approvisionner',
         'prod_id',
-        'apprivisionement_id',
+        'approvisionement_id',
     ];
 
     protected $table = "lignes_approvisionements";
@@ -24,6 +24,6 @@ class LigneApprovisionement extends Model
 
     public function produit(): BelongsTo
     {
-        return $this->belongsTo(Produit::class);
+        return $this->belongsTo(Produit::class,"prod_id");
     }
 }

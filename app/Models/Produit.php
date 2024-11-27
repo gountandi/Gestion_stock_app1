@@ -30,7 +30,7 @@ class Produit extends Model
 
     public function lignesapprovisionements(): HasMany {
 
-        return $this->hasMany(LigneApprovisionement::class);
+        return $this->hasMany(LigneApprovisionement::class,"prod_id");
 
     }
 

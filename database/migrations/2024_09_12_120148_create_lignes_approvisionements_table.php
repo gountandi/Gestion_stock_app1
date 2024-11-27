@@ -16,8 +16,8 @@ return new class extends Migration
             $table->integer('qte_approvisionner');
             $table->integer('prod_id');
             $table->foreign('prod_id')->references('id')->on('produits');
-            $table->integer('apprivisionement_id');
-            $table->foreign('apprivisionement_id')->references('id')->on('approvisionements');
+            $table->integer('approvisionement_id');
+            $table->foreign('approvisionement_id')->references('id')->on('approvisionements');
             $table->timestamps();
         });
     }

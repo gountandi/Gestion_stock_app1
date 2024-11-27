@@ -73,13 +73,15 @@ class ApprovisionementController extends Controller
         'gerant_id' => $gerant->id,
         'prix_achat_unitaire' => 0,
     ]);
+    //dd($approvisionement->id);
     //dd($request->all());
     // Traitement des lignes d'approvisionnement
+    //dd($produit_ids);
     for($i=0;$i<count($produit_ids);$i++){
         $produit=$produit_ids[$i];
         $quantite=$quantites[$i];
         $prix_achat_unitaire=$prix_achat_ids[$i];
-
+        //dd($approvisionement->id);
         // Création de la ligne d'approvisionnement
         $ligne_approvisionement = LigneApprovisionement::create([
             'qte_approvisionner' => $quantite,
@@ -89,6 +91,7 @@ class ApprovisionementController extends Controller
 
         // Mise à jour du stock du produit
         $produit = $ligne_approvisionement->produit;
+        //dd($produit);
         $produit->qte_stock += $ligne_approvisionement->qte_approvisionner;
         $produit->save();
 
