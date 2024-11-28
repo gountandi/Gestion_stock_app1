@@ -32,7 +32,7 @@ class Approvisionement extends Model
 
     public function lignesapprovisionements(): HasMany {
 
-        return $this->hasMany(LigneApprovisionement::class);
+        return $this->hasMany(LigneApprovisionement::class,'approvisionement_id');
 
     }
 

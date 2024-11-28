@@ -19,7 +19,7 @@ class LigneApprovisionement extends Model
 
     public function approvisionement(): BelongsTo
     {
-        return $this->belongsTo(Approvisionement::class);
+        return $this->belongsTo(Approvisionement::class,'approvisionement_id');
     }
 
     public function produit(): BelongsTo
